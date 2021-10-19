@@ -1,8 +1,5 @@
 $( document ).ready(function() {
     generateProductsData();
-    console.log('%c Hello there! I see you\'re checking out the code here ;) Feel free to look around. ', 'background: #222; color: #bada55');
-    console.log('%c Developer profile: https://github.com/peanutooo ', 'background: #222; color: #bada55');
-    console.log('%c Any feedback, suggestions or criticism?\n Drop me a message on LinkedIn: https://www.linkedin.com/in/iris-yan/ ', 'background: #222; color: #bada55');
 })
 
 async function getProductsJSON() {
