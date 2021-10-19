@@ -341,10 +341,8 @@ function postJump(){
 
     var html = '<form method="post" action="'+uploadUrl+'" id="postjump" style="display: none;">';
     Object.keys(params).forEach(function (key) {
-        // console.log(params[key]);
         html += '<input type="" name="'+key+'" value="'+params[key]+'" >';
     });
-    console.log(html);
     html += '</form>';
     $("body").append(html);
 
@@ -412,7 +410,7 @@ checkoutForm.addEventListener('submit', e => {
         })
         .then(res => {
 
-            console.log(res);
+            // console.log(res);
             if (res['status'] == 200) {
                 alert("Purchase successful!");
                 Store.clearAll();
