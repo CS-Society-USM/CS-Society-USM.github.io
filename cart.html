@@ -203,30 +203,25 @@
               <!-- loaded content -->
         </table>
 
-        <div class="mb-3 details-col p-5">
+        <div class="mb-3 details-col p-4 p-sm-5">
           <p class="fw-bold fs-4 fst-italic">Please bank in the total amount to:</p>
           <p class="mb-1">Account number: <b>164165077378</b></p>
           <p class="mb-1">Accountholder name: <b>Shindujaah Jaya Kumar </b></p>
           <p class="mb-1">Bank name: <b>Maybank</b></p>
-          <p>Reference: <b>MatricNumber CS Merch</b></p>
+          <p>Reference: <b>CSMerch MATRIC_NUM</b></p>
 
-          <label for="Receipt" class="form-label fw-bold">Receipt link
-            <span class="d-inline-block help-btn" id="receiptHelp" data-bs-toggle="modal" data-bs-target="#receiptHelpModal" >
-              <i class="fas fa-question-circle"></i>
-            </span>
-          </label>
-          <p class="desc-note">Upload the receipt screenshot to your Drive and submit the link.</p>
-          <!-- Get help on submitting receipt link button -->
-          
-          <input type="text" class="form-control" name="Receipt" id="Receipt" required>
+          <div class="form-group mt-5">
+            <label for="Receipt" class="form-label fw-bold">Upload receipt screenshot file</label>
+            <input type="file" class="form-control-file" id="Receipt" required>
+          </div>
 
-          <div class="mb-3 mt-5">
-            <input class="form-check-input" type="checkbox" value="yes" id="checkYes">
-            <label class="form-check-label fw-bold" for="checkYes">
+          <div class="mb-3 mt-5 row">
+            <input class="form-check-input col-1" type="checkbox" value="yes" id="checkYes">
+            <label class="form-check-label fw-bold col-11" for="checkYes">
               I understand that all my information submitted via this form will be kept securely and only used for CS Society merchandise purposes.* 
             </label>
           </div>
-        </div>        
+        </div>          
         
         <!-- Modals -->
         <!-- Shipping help -->
@@ -246,29 +241,7 @@
               </div>
             </div>
         </div>
-
-        <!-- Receipt help -->
-        <div class="modal fade" id="receiptHelpModal" tabindex="-1" aria-labelledby="receiptHelpModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="receiptHelpModalLabel">How to submit receipt link as proof of payment?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <p><b>Step 1:</b> Make payment with the given payment details.</p>
-                    <p><b>Step 2:</b> Take a screenshot of the receipt.</p>
-                    <p><b>Step 3:</b> 
-                      Upload your receipt to 
-                      <a href="https://support.google.com/drive/answer/2424368?hl=en&ref_topic=2375187">Google Drive</a>/
-                      <a href="https://support.microsoft.com/en-us/office/upload-and-save-files-and-folders-to-onedrive-a5710114-6aeb-4bf5-a336-dffa7cc0b77a">Microsoft OneDrive</a>.</p>
-                    <p><b>Step 4:</b> Ensure the sharing access is enabled.</p>
-                    <p><b>Step 5:</b> Paste the link of your receipt.</p>
-                    <p><b>Example of receipt screenshot:</b></p>
-                    <img src="img/receipt_example.jpg" alt="Receipt example" style="width: 60%; border: 2px solid black;">
-                </div>
-            </div>
-            </div>
+        
         </div>
   
         <button type="submit" class="btn btn-danger col-12 p-2 fs-5" id="checkoutSubmitBtn" value="submit" id="submit-form">Checkout</button>

@@ -315,6 +315,64 @@ $("input:radio[name='Collection_choice']").change(function () {
     }
 });
 
+const uploadUrl = 'https://script.google.com/macros/s/AKfycbzQyfLRxFB6z17EROnnBIjl5FyhrjTpH5pl-4wHTvnHDPUtpclWO-b_faEFyv47_SdCNQ/exec';
+var params = {
+    filename: '',
+    imageformat: ''
+};
+
+$('#Receipt').on("change", function() {
+    var file = this.files[0];
+    var fr = new FileReader();
+    var extension = file.name.split('.').pop().toLowerCase();
+    params.imageformat = extension;
+
+    fr.onload = function(e) {
+        params.filename = document.querySelector('#Matric_num').value;
+        params.file = e.target.result.replace(/^.*,/, '');
+    }
+    fr.readAsDataURL(file);
+});
+
+function postJump(){
+    if($("#postjump").length != 0) {
+        $('#postjump').remove();
+    }
+
+    var html = '<form method="post" action="'+uploadUrl+'" id="postjump" style="display: none;">';
+    Object.keys(params).forEach(function (key) {
+        // console.log(params[key]);
+        html += '<input type="" name="'+key+'" value="'+params[key]+'" >';
+    });
+    console.log(html);
+    html += '</form>';
+    $("body").append(html);
+
+    $('#postjump').submit(function(e){
+        e.preventDefault();
+        $.ajax({
+            url: uploadUrl,
+            type: 'post',
+            data: $('#postjump').serialize(),
+    
+            success: function(data){
+                console.log('SUCC');
+                console.log(data);
+            },
+    
+            error: function(data){
+                console.log('error');
+                console.log(data);
+            }
+        });
+        console.log('HI');
+
+    });
+    $('#postjump').submit();
+    $('#postjump').remove();
+
+}
+
 const scriptURLC ='https://script.google.com/macros/s/AKfycbz5Tas5pydfYR5gnDO2WyMWvxTgGt2KXsBnzmdhPs0bTE_BrjKuP4f4PDoMZEQjtrE1/exec'
 const checkoutForm = document.forms['checkout-form'];
 const submitBtn = document.querySelector('#submit-form');
@@ -346,14 +404,15 @@ checkoutForm.addEventListener('submit', e => {
         return false;
     }
 
+    postJump(); // upload receipt link
+
     fetch(scriptURLC, {
             method: 'POST',
             body: new FormData(checkoutForm)
         })
         .then(res => {
 
-            // console.log(res);
-
+            console.log(res);
             if (res['status'] == 200) {
                 alert("Purchase successful!");
                 Store.clearAll();
@@ -375,3 +434,4 @@ checkoutForm.addEventListener('submit', e => {
 
         })
 })
+
