@@ -363,7 +363,6 @@ function postJump(){
                 console.log(data);
             }
         });
-        console.log('HI');
 
     });
     $('#postjump').submit();
