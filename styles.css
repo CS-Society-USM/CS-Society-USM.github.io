@@ -1,0 +1,302 @@
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    background-color: #222222;
+    transition: opacity 0.5s 1s ease;
+}
+
+.fadeout {
+    opacity: 0;
+}
+
+.loader {
+    margin-top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 20px solid #ffe699; 
+    border-top: 20px solid #FFC107; 
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.navbar {
+    background-color: #FFCB2F;
+}
+
+.nav-link-btn h6, .nav-link-btn i {
+    color: white !important;
+    transition: color 0.3s ease;
+}
+
+.nav-link-btn:hover {
+    background-color: #3f3f3f;
+}
+
+.nav-link-btn:hover h6, .nav-link-btn:hover i {
+    color: #FFCB2F !important;
+}
+
+.nav-link-btn {
+    background-color: #222222;
+    padding: 10px 20px 10px 20px !important;
+}
+
+.nav-link .mobile-fontsize {
+    font-size: small;
+    color: white;
+}
+
+.nav-link-btn:hover h5, .mobile-fontsize:hover {
+    color: #FFCB2F !important;
+}
+
+.fas-nav-lg {
+    color: white;
+}
+
+.border {
+    border-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.view-cart-bg,
+.view-cart {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    position: fixed;
+    right: 20px;
+    bottom: 40px;
+    z-index: 100;
+}
+
+.view-cart {
+    transition: background-color 0.3s ease;
+}
+
+.view-cart-bg {
+    animation: pulse 1.5s ease infinite;
+    background: #FFCB2F;
+}
+
+
+@keyframes pulse {
+    0% {
+      transform: scale(1, 1);
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      transform: scale(1.3);
+      opacity: 0;
+    }
+  }
+  
+.view-cart:hover {
+    background-color: #ffd65b !important;
+}
+.page-footer {
+    background-color: #4e4e4e;
+    margin: 50px 0px 0px 0px;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    z-index: 10;
+    color: white;
+    position: relative;
+    height: 110px;
+}
+
+.cont_all {
+    margin-bottom: 100px;
+}
+
+body {
+    background-color: #222222;
+    min-height:100vh; 
+    margin:0; 
+    /* margin-bottom: 100px; */
+}
+
+.card {
+    box-shadow: none;
+    transition: box-shadow 0.3s ease-in-out;
+    max-width: 500px;
+    margin: 10px;
+    min-width: 30%;
+    background-color: #3f3f3f;
+    transition: border 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: 0 3px 15px rgb(0 0 0 / 0.2);
+    border: 2px solid #FFCB2F;
+}
+
+.card-img-box {
+    padding-top: 10px;
+    /* height: 70%; */
+}
+
+/* disabled add to cart button style */
+.disabled {
+    background-color: rgb(158, 158, 158) !important;
+}
+
+.size-description {
+    font-size: small;
+    font-style: italic;
+    color: #FFCB2F;
+    font-weight: bold;
+    text-decoration: underline 0.15em rgba(255, 255, 255, 0);
+    transition: text-decoration-color 300ms;
+    cursor: pointer;
+}
+
+.size-description:hover {
+    text-decoration-color: rgb(255, 255, 255);
+}
+
+.addToCartBtn {
+    width: 100%;
+}
+
+.addToCartBtn:focus {
+    background: #ffd044 !important;
+}
+
+.form-check {
+    margin: auto;
+    text-align: left;
+}
+ 
+.warning {
+    color: rgb(255, 118, 118);
+}
+
+.toast {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 11;
+    opacity: 0 !important;
+    transition: opacity 0.8s 0.1s ease;
+}
+
+.fadein {
+    opacity: 1 !important;
+}
+
+.toast b {
+    color: black;
+}
+
+.radiofont {
+    padding: 10px 1px 10px 1px !important;
+    font-weight: bold;
+}
+
+.desc-note {
+    font-style: italic;
+    font-size: small;
+    margin-bottom: 5px;
+}
+
+.details-col {
+    background-color: #ffcb2f;
+}
+
+.form-control {
+    background-color: #313131;
+    color: white;
+}
+
+.shipping-bg, .totalprice-bg {
+    background-color: #3f3f3f;
+}
+
+.form-control:focus {
+    background-color: #1d1d1d;
+    color: white;
+}
+
+/*Change text in autofill textbox*/
+input:-internal-autofill-selected, input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #313131 inset !important;
+    -webkit-text-fill-color: white !important;
+}
+
+.form-control:disabled, .form-control[readonly] {
+    background-color: #636363;
+    border: 
+}
+
+.invalid-input {
+    font-size: small;
+    font-style: italic;
+    font-weight: bold;
+    color: red;
+    line-height: 15px;
+    margin-top: 5px;
+}
+
+.help-btn {
+    cursor: pointer;
+}
+
+.help-btn:hover {
+    opacity: 0.8;
+}
+
+.whatsapp-btn {
+    width: 200px;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .toast {
+        width: 50%;
+    }
+
+    .page-footer {
+        padding: 10px;
+    }
+
+    .footer-copyright {
+        font-size: small;
+    }
+
+    .nav-link {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .view-cart-bg,
+    .view-cart {
+        width: 80px;
+        height: 80px;
+        border-radius: 100%;
+        position: fixed;
+        right: 50px;
+        bottom: 30px;
+    }
+}  
+
+.removeitem:hover {
+    cursor: pointer;
+}

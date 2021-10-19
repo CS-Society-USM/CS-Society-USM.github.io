@@ -1,0 +1,47 @@
+[
+    {
+        "id": "H01",
+        "alt": "hoodie",
+        "item_name": "Hoodie",
+        "price": 70,
+        "has_Size": true,
+        "size_range": ["XS", "S", "M", "L", "XL", "2XL"],
+        "size": "",
+        "img_path": "img/H01/",
+        "num_img": 3
+    },
+    {
+        "id": "SST01",
+        "alt": "shortsleeveshirt",
+        "item_name": "Short-sleeve T-shirt",
+        "price": 20,
+        "has_Size": true,
+        "size_range": ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
+        "size": "",
+        "img_path": "img/SST01/",
+        "num_img": 3
+
+    },
+    {
+        "id": "LST01",
+        "alt": "longsleeveshirt",
+        "item_name": "Long-sleeve T-shirt",
+        "price": 23,
+        "has_Size": true,
+        "size_range": ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
+        "size": "",
+        "img_path": "img/LST01/",
+        "num_img": 3
+    },
+    {
+        "id": "C01",
+        "alt": "cap",
+        "item_name": "Cap",
+        "price": 16,
+        "has_Size": false,
+        "img_path": "img/C01/",
+        "num_img": 2
+
+    }
+]
+    

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CS Society Merch Order Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="img/logo.png">
+</head>
+
+<body>
+
+  <div class="preloader">
+    <div class="loader"></div>
+    <h6 class="fw-bold mt-4 text-center">Loading amazing stuff...</h6>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid d-flex">
+
+      <!-- navbar brand display on large screen -->
+      <a class="navbar-brand lgscreen d-none d-sm-flex flex-wrap" href="index.html">
+        <img src="img/logo.png" alt="" width="50" height="50" class="d-sm-inline-block ms-sm-4 align-text-top">
+        <h4 class="m-auto ms-4 text-bold d-sm-inline-block d-block">CS Society Merch Store</h4>
+      </a>
+      
+      <!-- navbar brand display on mobile -->
+      <a class="d-sm-none d-block navbar-brand mobile m-auto d-flex" href="index.html">
+        <img src="img/logo.png" alt="" width="90" height="90" class="d-inline-block m-auto align-text-top">
+        <div class="m-auto ms-4">
+          <h2 class="text-bold">CS Society</h2>
+          <h6>Merch Order</h6>
+        </div>
+      </a>
+
+      <!-- nav links for large screen -->
+      <div class="d-none d-lg-flex justify-content-end me-5" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link lgscreen me-4 btn btn-danger nav-link-btn rounded-pill d-flex justify-content-center align-items-center" href="/index.html">
+            <i class="fas fa-gift fa-lg me-2"></i>
+            <h5 class="mb-0 text-white">Merch</h5>
+          </a>
+          <a class="nav-link lgscreen  btn btn-danger nav-link-btn rounded-pill d-flex justify-content-center align-items-center" href="/cart.html">
+            <i class="fas fa-shopping-cart fa-lg me-2"></i>
+            <h5 class="mb-0 text-white">View cart</h5>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- nav icons for mobile -->
+  <div class="d-sm-none d-flex row ms-1 me-1">
+    <div class="col-6 p-1">
+      <a class="nav-link btn btn-danger nav-link-btn rounded-pill d-flex justify-content-center align-items-center" href="/index.html">
+        <i class="fas fa-gift fa-sm me-2"></i>
+        <h5 class="mb-0 mobile-fontsize text-white">Merch</h5>
+      </a>
+    </div>
+    <div class="col-6 p-1">
+      <a class="nav-link btn btn-danger nav-link-btn rounded-pill d-flex justify-content-center align-items-center" href="/cart.html">
+        <i class="fas fa-shopping-cart fa-sm me-2"></i>
+        <h5 class="mb-0 mobile-fontsize text-white">View cart</h5>
+      </a>
+    </div>
+  </div>
+
+
+  <div class="container mt-5">
+
+    <div id="all-items">
+      <!-- Hoodie -->
+      <div class="mb-3 M-4" id="products-display">
+        <div class="row justify-content-evenly">
+          <div class="card col-lg-3 text-center mb-2" id="H01">
+            <div class="card-img-box d-flex align-items-center">
+              <div id="hoodie-carousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div class="carousel-indicators mt-2">
+                  <button type="button" data-bs-target="#hoodie-carousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#hoodie-carousel" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#hoodie-carousel" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+                </div>
+                <!-- carousel image -->
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="img/items/Hoodie front (slant).png" class="d-block w-100" alt="hoodie">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="img/items/Hoodie front.png" class="d-block w-100" alt="hoodie">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="img/items/Hoodie back.png" class="d-block w-100" alt="hoodie">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#hoodie-carousel"
+                  data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#hoodie-carousel"
+                  data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title hoodie-title"></h5>
+              <p class="card-text">RM<span class="hoodie-price"></span>.00</p>
+
+              <div class="btn-group mb-1 d-flex row" id="hoodie-size" role="group"
+                aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check" name="hoodieradio" id="xs_size_hoodie" value='XS'
+                  autocomplete="off">
+                <label class="btn btn-outline-primary col-1 radiofont" for="xs_size_hoodie">XS</label>
+
+                <input type="radio" class="btn-check" name="hoodieradio" id="s_size_hoodie" value='S'>
+                <label class="btn btn-outline-primary col-1 radiofont" for="s_size_hoodie">S</label>
+
+                <input type="radio" class="btn-check" name="hoodieradio" id="m_size_hoodie" value='M'>
+                <label class="btn btn-outline-primary col-1 radiofont" for="m_size_hoodie">M</label>
+
+                <input type="radio" class="btn-check" name="hoodieradio" id="l_size_hoodie" value='L'>
+                <label class="btn btn-outline-primary col-1 radiofont" for="l_size_hoodie">L</label>
+
+                <input type="radio" class="btn-check" name="hoodieradio" id="xl_size_hoodie" value='XL'
+                  autocomplete="off">
+                <label class="btn btn-outline-primary col-1 radiofont" for="xl_size_hoodie">XL</label>
+
+                <input type="radio" class="btn-check" name="hoodieradio" id="2xl_size_hoodie" value='2XL'
+                  autocomplete="off">
+                <label class="btn btn-outline-primary col-1 radiofont" for="2xl_size_hoodie">2XL</label>
+              </div>
+
+              <!-- View hoodie size details button -->
+              <div class="mb-3" data-bs-toggle="modal" data-bs-target="#hoodieSizeDetailsModal" >
+                <span class="size-description">View size description</span>
+              </div>
+
+              <!-- Modal -->
+              <div class="modal fade" id="hoodieSizeDetailsModal" tabindex="-1" aria-labelledby="hoodieSizeDetailsModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="hoodieSizeDetailsModalLabel">Hoodie size description</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <img src="img/hoodie_sizedetails.PNG" alt="" style="width: 100%;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-center">
+                <a href="" class="btn btn-primary minusBtn me-2"><i class="fas fa-minus"></i></a>
+                <span class="p-2 fw-bold" id="hoodie-qty">0</span>
+                <a href="" class="btn btn-primary addBtn ms-2"><i class="fas fa-plus"></i></a>
+              </div>
+            </div>
+            <div class="card-footer bg-transparent pt-3 pb-3">
+              <a href="#" class="btn btn-success addToCartBtn disabled"><i class="fas fa-cart-plus me-2"></i>Add to
+                cart</a>
+              <p class="warning d-none mt-1 fw-bold fst-italic mb-2 mt-2" id="hoodiesize-warning">Please select shirt
+                size!</p>
+            </div>
+          </div>
+
+          <!-- Short sleeve t-shirt -->
+          <div class="card col-lg-3 text-center mb-2" id="SST01">
+            <div class="card-img-box d-flex align-items-center">
+              <div id="shortsleeveshirt-carousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#shortsleeveshirt-carousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#shortsleeveshirt-carousel" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#shortsleeveshirt-carousel" data-bs-slide-to="2"
+                    aria-label="Slide 2"></button>
+                </div>
+                <!-- carousel image -->
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="img/items/Short sleeve front.png" class="d-block w-100" alt="short sleeve tshirt">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="img/items/Short sleeve back.png" class="d-block w-100" alt="short sleeve tshirt">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="img/items/Short sleeve right side .png" class="d-block w-100" alt="short sleeve tshirt">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#shortsleeveshirt-carousel"
+                  data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#shortsleeveshirt-carousel"
+                  data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title shortsleeveshirt-title"></h5>
+              <p class="card-text">RM<span class="shortsleeveshirt-price"></span>.00</p>
+
+              <div class="btn-group mb-3 d-flex row" id="shortsleeveshirt-size" role="group"
+                aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check col-1" name="shortsleeveradio" id="xs_size" value='XS'
+                  autocomplete="off">
+                <label class="btn btn-outline-primary col-1 radiofont" for="xs_size">XS</label>
+
+                <input type="radio" class="btn-check col-1" name="shortsleeveradio" id="s_size" value='S'
+                  autocomplete="off">
+                <label class="btn btn-outline-primary col-1 radiofont" for="s_size">S</label>
+
+                <input type="radio" class="btn-check col-1" name="shortsleeveradio" id="m_size" value='M'
+                  autocomplete="off">
+                <label class="btn btn-outline-primary col-1 radiofont" for="m_size">M</label>
+
+                <input type="radio" class="btn-check col-1" name="shortsleeveradio" id="l_size" value='L'
+                  autocomplete="off">
+                <label class="btn btn-outline-primary col-1 radiofont" for="l_size">L</label>
+
+                <input type="radio" class="btn-check col-1" name="shortsleeveradio" id="xl_size" value='XL'
+                  autocomplete="off">
+                <label class="btn btn-outline-primary col-1 radiofont" for="xl_size">XL</label>
+
+                <input type="radio" class="btn-check col-1" name="shortsleeveradio" id="2xl_size" value='2XL'
+                  autocomplete="off">
+                <label class="btn btn-outline-primary col-1 radiofont" for="2xl_size">2XL</label>
+
+                <input type="radio" class="btn-check col-1" name="shortsleeveradio" id="3xl_size" value='3XL'
+                  autocomplete="off">
+                <label class="btn btn-outline-primary col-1 radiofont" for="3xl_size">3XL</label>
+              </div>
+              <div class="d-flex justify-content-center">
+                <a href="" class="btn btn-primary minusBtn me-2"><i class="fas fa-minus"></i></a>
+                <span class="p-2 fw-bold"id="shortsleeve-qty">0</span>
+                <a href="" class="btn btn-primary addBtn ms-2"><i class="fas fa-plus"></i></a>
+              </div>
+            </div>
+            <div class="card-footer bg-transparent pt-3 pb-3">
+              <a href="#" class="btn btn-success addToCartBtn disabled"><i class="fas fa-cart-plus me-2"></i>Add to
+                cart</a>
+              <p class="warning d-none mt-1 fw-bold fst-italic mb-2 mt-2" id="shortshirtsize-warning">Please select shirt
+                size!</p>
+            </div>
+          </div>
+
+          <!-- Long sleeve t-shirt -->
+          <div class="card col-lg-3 text-center mb-2" id="LST01">
+            <div class="card-img-box d-flex align-items-center">
+              <div id="longsleeveshirt-carousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#longsleeveshirt-carousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#longsleeveshirt-carousel" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#longsleeveshirt-carousel" data-bs-slide-to="2"
+                    aria-label="Slide 2"></button>
+                </div>
+                <!-- carousel image -->
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="img/items/Long sleeve front.png" class="d-block w-100" alt="long sleeve tshirt">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="img/items/Long sleeve back .png" class="d-block w-100" alt="long sleeve tshirt">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="img/items/Long sleeve right side .png" class="d-block w-100" alt="long sleeve tshirt">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#longsleeveshirt-carousel"
+                  data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#longsleeveshirt-carousel"
+                  data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title longsleeveshirt-title"></h5>
+              <p class="card-text">RM<span class="longsleeveshirt-price"></span>.00</p>
+
+              <div class="btn-group mb-3 d-flex row" id="longsleeveshirt-size" role="group"
+                aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check" name="longsleeveradio" id="xs_size_long" value='XS'
+                  autocomplete="off">
+                <label class="btn btn-outline-primary col-1 radiofont" for="xs_size_long">XS</label>
+
+                <input type="radio" class="btn-check" name="longsleeveradio" id="s_size_long" value='S'
+                  autocomplete="off">
+                <label class="btn btn-outline-primary col-1 radiofont" for="s_size_long">S</label>
+
+                <input type="radio" class="btn-check" name="longsleeveradio" id="m_size_long" value='M'
+                  autocomplete="off">
+                <label class="btn btn-outline-primary col-1 radiofont" for="m_size_long">M</label>
+
+                <input type="radio" class="btn-check" name="longsleeveradio" id="l_size_long" value='L'
+                  autocomplete="off">
+                <label class="btn btn-outline-primary col-1 radiofont" for="l_size_long">L</label>
+
+                <input type="radio" class="btn-check" name="longsleeveradio" id="xl_size_long" value='XL'
+                  autocomplete="off">
+                <label class="btn btn-outline-primary col-1 radiofont" for="xl_size_long">XL</label>
+
+                <input type="radio" class="btn-check" name="longsleeveradio" id="2xl_size_long" value='2XL'
+                  autocomplete="off">
+                <label class="btn btn-outline-primary col-1 radiofont" for="2xl_size_long">2XL</label>
+
+                <input type="radio" class="btn-check" name="longsleeveradio" id="3xl_size_long" value='3XL'
+                  autocomplete="off">
+                <label class="btn btn-outline-primary col-1 radiofont" for="3xl_size_long">3XL</label>
+              </div>
+              <div class="d-flex justify-content-center">
+                <a href="" class="btn btn-primary minusBtn me-2"><i class="fas fa-minus"></i></a>
+                <span class="p-2 fw-bold" id="longsleeve-qty">0</span>
+                <a href="" class="btn btn-primary addBtn ms-2"><i class="fas fa-plus"></i></a>
+              </div>
+            </div>
+            <div class="card-footer bg-transparent pt-3 pb-3">
+              <a href="#" class="btn btn-success addToCartBtn disabled"><i class="fas fa-cart-plus me-2"></i>Add to
+                cart</a>
+              <p class="warning d-none mt-1 fw-bold fst-italic mb-2 mt-2" id="longshirtsize-warning">Please select shirt
+                size!</p>
+            </div>
+          </div>
+
+          <!-- Cap -->
+          <div class="card col-lg-3 text-center mb-2" id="C01">
+            <div class="card-img-box d-flex align-items-center">
+              <div id="cap-carousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#cap-carousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#cap-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                </div>
+                <!-- carousel image -->
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="img/items/Cap front (slant).png" class="d-block w-100" alt="cap">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="img/items/Cap front.png" class="d-block w-100" alt="cap">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#cap-carousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#cap-carousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title cap-title"></h5>
+              <p class="card-text">RM<span class="cap-price"></span>.00</p>
+
+              <div class="d-flex justify-content-center">
+                <a href="" class="btn btn-primary minusBtn me-2"><i class="fas fa-minus"></i></a>
+                <span class="p-2 fw-bold" id="cap-qty">0</span>
+                <a href="" class="btn btn-primary addBtn ms-2"><i class="fas fa-plus"></i></a>
+              </div>
+            </div>
+            <div class="card-footer bg-transparent pt-3 pb-3">
+              <a href="#" class="btn btn-success addToCartBtn disabled"><i class="fas fa-cart-plus me-2"></i>Add to
+                cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="position-fixed bottom-0 start-0 p-3" style="z-index: 11; width: 300px;">
+      <div id="itemAddedToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body row me-2">
+          <div class="col-2">
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="col-10 text-end fw-bold">
+            Item added to cart!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="position-fixed bottom-0 start-0 p-3" style="z-index: 11; width: 300px;">
+      <div id="itemUpdatedToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body row me-2">
+          <div class="col-2">
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="col-10 text-end fw-bold">
+            Item updated in cart!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="view-cart-bg"></div>
+    <a href="/cart.html" class="btn btn-danger view-cart text-center d-flex justify-content-center align-items-center" >
+      <i class="fas fa-shopping-cart fa-lg M-auto"></i>
+    </a>
+
+  </div>
+
+  <footer class="page-footer font-small">
+    <div class="footer-copyright text-center fw-bold">Developed with ❤️ by CS Society 2021/2022 (Hyperion)</div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <!-- <script src="/load.js"></script> -->
+  <script src="/main.js"></script>
+
+</body>
+
+</html>
