@@ -353,7 +353,7 @@ checkoutForm.addEventListener('submit', e => {
     fr.readAsArrayBuffer(file);
     fr.onload = f => {
         
-        const uploadFileURL = "https://script.google.com/macros/s/AKfycbxLn_gBL8Ko0P0O7QewRKQ6Sl2ZMkrN67kc9-dW0ZO5rucHyfEitEqu_U5wxlwD2xORoA/exec"; 
+        const uploadFileURL = "https://script.google.com/macros/s/AKfycbwcjKfopyYb_ce0oEwOW1jnMH5k4M7ZLMiHeNrr_znDoG40bsD5qHoaOhyms50aXJ6Y/exec"; 
         
         const qs = new URLSearchParams({filename: matric_num || file.name, mimeType: file.type});
         fetch(`${uploadFileURL}?${qs}`, {
