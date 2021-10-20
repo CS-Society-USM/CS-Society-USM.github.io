@@ -141,13 +141,16 @@
             <div class="form-check">
               <input class="form-check-input" type="radio" name="Collection_choice" id="collection_pickup" value="Pickup" required>
               <label class="form-check-label" for="collection_pickup">Pick up (on-campus only)</label>
+                <span class="d-inline-block help-btn" id="pickupHelp" data-bs-toggle="modal" data-bs-target="#pickupHelpModal" >
+                  <i class="fas fa-question-circle"></i>
+                </span>
             </div>
             <div class="form-check">
               <input class="form-check-input" type="radio" name="Collection_choice" id="collection_ship" value="Ship" required>
               <label class="form-check-label" for="collection_ship">Ship (within Malaysia only)
-                <span class="d-inline-block help-btn" id="receiptHelp" data-bs-toggle="modal" data-bs-target="#shippingHelpModal" >
+                <span class="d-inline-block help-btn" id="shippingHelp" data-bs-toggle="modal" data-bs-target="#shippingHelpModal" >
                 <i class="fas fa-question-circle"></i>
-              </span>
+                </span>
             </label>
             </div>
           </div>
@@ -241,8 +244,29 @@
               </div>
             </div>
         </div>
-          <button type="submit" class="btn btn-danger col-12 p-2 fs-5" id="checkoutSubmitBtn" value="submit" id="submit-form">Checkout</button>
-          <div class="loader-small d-none"></div>
+
+        <!-- Pickup help -->
+        <div class="modal fade" id="pickupHelpModal" tabindex="-1" aria-labelledby="pickupHelpModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="pickupHelpModalLabel">Pickup info</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body p-4">
+                      <p>If you live near USM Main Campus (but not in hostel) and would like to self-pickup, please check the pickup option and write "Self pickup" in the Address field. Our team will be in touch for the pickup arrangements.</p>
+                      <a href="https://wa.me/+60143142331" class="d-block">Shindujaah</a>
+                      <a href="https://wa.me/+60173183835" class="d-block">Aisyah</a>
+                      
+                  </div>
+              </div>
+            </div>
+        </div>
+
+
+
+        <button type="submit" class="btn btn-danger col-12 p-2 fs-5" id="checkoutSubmitBtn" value="submit" id="submit-form">Checkout</button>
+        <div class="loader-small d-none"></div>
         
         </div>
   

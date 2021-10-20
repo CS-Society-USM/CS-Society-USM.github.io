@@ -49,7 +49,7 @@ window.onload = function(){
         const preloader = document.querySelector(".preloader");
         preloader.classList.add("fadeout");
         preloader.style.display = "none";
-    }, 2000)   
+    }, 1500)   
 }
 
 $("#Email").change(function () { 
@@ -64,7 +64,6 @@ $("#Email").change(function () {
     }
 
 });
-
 
 async function getProductsJSON() {
     let url = 'products.json';
@@ -375,6 +374,7 @@ checkoutForm.addEventListener('submit', e => {
         
         const uploadFileURL = "https://script.google.com/macros/s/AKfycbwcjKfopyYb_ce0oEwOW1jnMH5k4M7ZLMiHeNrr_znDoG40bsD5qHoaOhyms50aXJ6Y/exec"; 
         
+        // process file upload first to drive
         const qs = new URLSearchParams({filename: submitted_filename || file.name, mimeType: file.type});
         fetch(`${uploadFileURL}?${qs}`, {
             method: "POST", 
@@ -387,6 +387,7 @@ checkoutForm.addEventListener('submit', e => {
         })
 
         .then(e => {
+            // then process the form data upload to sheet
             fetch(scriptURLC, {
                 method: 'POST',
                 body: new FormData(checkoutForm)
@@ -403,8 +404,6 @@ checkoutForm.addEventListener('submit', e => {
                 } else {
                     alert("Something went wrong! Please try again in 1 minute.");
                     console.log(res['status']);
-                    console.log("Something went wrong!", "Please try after some time", "error");
-    
                 }
             })
             .catch(error => {
