@@ -354,6 +354,8 @@ checkoutForm.addEventListener('submit', e => {
 
     const fileUploadElement = document.querySelector("#Receipt");
     const matric_num = document.querySelector('#Matric_num').value;
+    const student_name = document.querySelector('#name').value;
+    const submitted_filename = matric_num + "_" + student_name;
     const file = fileUploadElement.files[0];
     const fr = new FileReader();
     fr.readAsArrayBuffer(file);
@@ -361,7 +363,7 @@ checkoutForm.addEventListener('submit', e => {
         
         const uploadFileURL = "https://script.google.com/macros/s/AKfycbwcjKfopyYb_ce0oEwOW1jnMH5k4M7ZLMiHeNrr_znDoG40bsD5qHoaOhyms50aXJ6Y/exec"; 
         
-        const qs = new URLSearchParams({filename: matric_num || file.name, mimeType: file.type});
+        const qs = new URLSearchParams({filename: submitted_filename || file.name, mimeType: file.type});
         fetch(`${uploadFileURL}?${qs}`, {
             method: "POST", 
             body: JSON.stringify([...new Int8Array(f.target.result)])
