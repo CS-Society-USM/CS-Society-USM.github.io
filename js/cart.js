@@ -334,22 +334,10 @@ checkoutForm.addEventListener('submit', e => {
     e.preventDefault();
 
     const checkoutSubmitBtn = document.querySelector("#checkoutSubmitBtn");
-
     checkoutSubmitBtn.classList.add("disabled");
 
     if (Store.getCartItemsID().length < 2) {
         alert("Please ensure your cart has items before checking out!");
-
-        if (checkoutSubmitBtn.classList.contains('disabled')) {
-            checkoutSubmitBtn.classList.remove("disabled");
-        }
-        return false;
-    }
-
-    const email = document.querySelector('input[name="Email"]');
-    if (!email.value.includes("@student.usm.my")) {
-        email.nextElementSibling.classList.remove('d-none');
-        email.nextElementSibling.classList.add('d-block');
 
         if (checkoutSubmitBtn.classList.contains('disabled')) {
             checkoutSubmitBtn.classList.remove("disabled");
@@ -382,7 +370,7 @@ checkoutForm.addEventListener('submit', e => {
         })
         .then(res => {
             res.json();
-
+            
             console.log(res);
         })
 
