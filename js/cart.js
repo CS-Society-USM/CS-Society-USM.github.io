@@ -49,9 +49,21 @@ window.onload = function(){
         const preloader = document.querySelector(".preloader");
         preloader.classList.add("fadeout");
         preloader.style.display = "none";
-    }, 2000)
-    
+    }, 2000)   
 }
+
+$("#Email").change(function () { 
+
+    var emailInput = $("#Email").val().toLowerCase();
+    if (!emailInput.includes("@student.usm.my")) {
+        $("#invalid-email").removeClass("d-none");
+        $("#invalid-email").addClass("d-block");
+    } else {
+        $("#invalid-email").removeClass("d-block");
+        $("#invalid-email").addClass("d-none");
+    }
+
+});
 
 
 async function getProductsJSON() {

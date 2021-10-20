@@ -91,12 +91,12 @@
 
           <div class="mb-3">
             <label for="Email" class="form-label fw-bold">Student Outlook e-mail</label>
-            <input type="email" class="form-control" name="Email" id="Email" placeholder="eg ali@student.usm.my" pattern="^.*@student.usm.my" required 
+            <input type="email" class="form-control" name="Email" id="Email" placeholder="eg ali@student.usm.my" required 
             oninvalid="this.setCustomValidity('Please provide a valid student Outlook e-mail.')"
             oninput="this.setCustomValidity('')"> 
-            <!-- <div class="invalid-input d-none">
+            <div class="invalid-input d-none" id="invalid-email">
               Please provide a valid student Outlook e-mail.
-            </div> -->
+            </div>
           </div>
 
           <div class="mb-3">
