@@ -25,6 +25,18 @@
     animation: spin 2s linear infinite;
 }
 
+.loader-small {
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px solid #ffe699; 
+    border-top: 5px solid #FFC107; 
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 2s linear infinite;
+}
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }

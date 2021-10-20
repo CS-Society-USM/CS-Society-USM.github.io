@@ -362,38 +362,41 @@ checkoutForm.addEventListener('submit', e => {
         })
         .then(res => {
             res.json();
+
+            console.log(res);
         })
-        .then(e => console.log(e))
+
+        .then(e => {
+            fetch(scriptURLC, {
+                method: 'POST',
+                body: new FormData(checkoutForm)
+            })
+            .then(res => {
+    
+                console.log(res);
+                if (res['status'] == 200) {
+                    alert("Purchase successful!");
+                    Store.clearAll();
+                    window.location.replace("thankyou.html");
+                    return true;
+    
+                } else {
+                    alert("Something went wrong! Please try again in 1 minute.");
+                    console.log(res['status']);
+                    console.log("Something went wrong!", "Please try after some time", "error");
+    
+                }
+            })
+            .catch(error => {
+    
+                console.log("Something went wrong!", "Please try after some time", "error");
+                console.log(error);
+    
+            })
+
+        })
         .catch(err => console.log(err));
 
     }
-
-    fetch(scriptURLC, {
-            method: 'POST',
-            body: new FormData(checkoutForm)
-        })
-        .then(res => {
-
-            // console.log(res);
-            if (res['status'] == 200) {
-                alert("Purchase successful!");
-                Store.clearAll();
-                window.location.replace("thankyou.html");
-                return true;
-
-            } else {
-                alert("Something went wrong! Please try again in 1 minute.");
-                console.log(res['status']);
-                console.log("Something went wrong!", "Please try after some time", "error");
-
-            }
-        })
-        .catch(error => {
-
-            console.log("Something went wrong!", "Please try after some time", "error");
-            // todo enable submit button
-            console.log(error);
-
-        })
 })
 
