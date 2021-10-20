@@ -315,60 +315,60 @@ $("input:radio[name='Collection_choice']").change(function () {
     }
 });
 
-const uploadUrl = 'https://script.google.com/macros/s/AKfycbzQyfLRxFB6z17EROnnBIjl5FyhrjTpH5pl-4wHTvnHDPUtpclWO-b_faEFyv47_SdCNQ/exec';
-var params = {
-    filename: '',
-    imageformat: ''
-};
+// const uploadUrl = 'https://script.google.com/macros/s/AKfycbzQyfLRxFB6z17EROnnBIjl5FyhrjTpH5pl-4wHTvnHDPUtpclWO-b_faEFyv47_SdCNQ/exec';
+// var params = {
+//     filename: '',
+//     imageformat: ''
+// };
 
-$('#Receipt').on("change", function() {
-    var file = this.files[0];
-    var fr = new FileReader();
-    var extension = file.name.split('.').pop().toLowerCase();
-    params.imageformat = extension;
+// $('#Receipt').on("change", function() {
+//     var file = this.files[0];
+//     var fr = new FileReader();
+//     var extension = file.name.split('.').pop().toLowerCase();
+//     params.imageformat = extension;
 
-    fr.onload = function(e) {
-        params.filename = document.querySelector('#Matric_num').value;
-        params.file = e.target.result.replace(/^.*,/, '');
-    }
-    fr.readAsDataURL(file);
-});
+//     fr.onload = function(e) {
+//         params.filename = document.querySelector('#Matric_num').value;
+//         params.file = e.target.result.replace(/^.*,/, '');
+//     }
+//     fr.readAsDataURL(file);
+// });
 
-function postJump(){
-    if($("#postjump").length != 0) {
-        $('#postjump').remove();
-    }
+// function postJump(){
+//     if($("#postjump").length != 0) {
+//         $('#postjump').remove();
+//     }
 
-    var html = '<form method="post" action="'+uploadUrl+'" id="postjump" style="display: none;">';
-    Object.keys(params).forEach(function (key) {
-        html += '<input type="" name="'+key+'" value="'+params[key]+'" >';
-    });
-    html += '</form>';
-    $("body").append(html);
+//     var html = '<form method="post" action="'+uploadUrl+'" id="postjump" style="display: none;">';
+//     Object.keys(params).forEach(function (key) {
+//         html += '<input type="" name="'+key+'" value="'+params[key]+'" >';
+//     });
+//     html += '</form>';
+//     $("body").append(html);
 
-    $('#postjump').submit(function(e){
-        e.preventDefault();
-        $.ajax({
-            url: uploadUrl,
-            type: 'post',
-            data: $('#postjump').serialize(),
+//     $('#postjump').submit(function(e){
+//         e.preventDefault();
+//         $.ajax({
+//             url: uploadUrl,
+//             type: 'post',
+//             data: $('#postjump').serialize(),
     
-            success: function(data){
-                console.log('SUCC');
-                console.log(data);
-            },
+//             success: function(data){
+//                 console.log('SUCC');
+//                 console.log(data);
+//             },
     
-            error: function(data){
-                console.log('error');
-                console.log(data);
-            }
-        });
+//             error: function(data){
+//                 console.log('error');
+//                 console.log(data);
+//             }
+//         });
 
-    });
-    $('#postjump').submit();
-    $('#postjump').remove();
+//     });
+//     $('#postjump').submit();
+//     $('#postjump').remove();
 
-}
+// }
 
 const scriptURLC ='https://script.google.com/macros/s/AKfycbz5Tas5pydfYR5gnDO2WyMWvxTgGt2KXsBnzmdhPs0bTE_BrjKuP4f4PDoMZEQjtrE1/exec'
 const checkoutForm = document.forms['checkout-form'];
@@ -401,7 +401,27 @@ checkoutForm.addEventListener('submit', e => {
         return false;
     }
 
-    postJump(); // upload receipt link
+    const fileUploadElement = document.querySelector("#Receipt");
+    const matric_num = document.querySelector('#Matric_num').value;
+    const file = fileUploadElement.files[0];
+    const fr = new FileReader();
+    fr.readAsArrayBuffer(file);
+    fr.onload = f => {
+        
+        const uploadFileURL = "https://script.google.com/macros/s/AKfycbxLn_gBL8Ko0P0O7QewRKQ6Sl2ZMkrN67kc9-dW0ZO5rucHyfEitEqu_U5wxlwD2xORoA/exec"; 
+        
+        const qs = new URLSearchParams({filename: matric_num || file.name, mimeType: file.type});
+        fetch(`${uploadFileURL}?${qs}`, {
+            method: "POST", 
+            body: JSON.stringify([...new Int8Array(f.target.result)])
+        })
+        .then(res => {
+            res.json();
+        })
+        .then(e => console.log(e))
+        .catch(err => console.log(err));
+
+    }
 
     fetch(scriptURLC, {
             method: 'POST',
