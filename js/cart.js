@@ -346,6 +346,12 @@ checkoutForm.addEventListener('submit', e => {
         return false;
     }
 
+    const loader = document.querySelector(".loader-small");
+    if (loader.classList.contains("d-none")) {
+        loader.classList.remove("d-none");
+        loader.classList.add("d-block");
+    }
+
     const fileUploadElement = document.querySelector("#Receipt");
     const matric_num = document.querySelector('#Matric_num').value;
     const file = fileUploadElement.files[0];
