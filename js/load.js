@@ -1,6 +1,6 @@
-$( document ).ready(function() {
+document.addEventListener("DOMContentLoaded", function(event) { 
     generateProductsData();
-})
+});
 
 async function getProductsJSON() {
     let url = 'products.json';

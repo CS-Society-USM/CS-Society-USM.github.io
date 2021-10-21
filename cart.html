@@ -92,6 +92,7 @@
           <div class="mb-3">
             <label for="Email" class="form-label fw-bold">Student Outlook e-mail</label>
             <input type="email" class="form-control" name="Email" id="Email" placeholder="eg ali@student.usm.my" pattern="^.*@student.usm.my" required 
+            onchange="validifyEmail()"
             oninvalid="this.setCustomValidity('Please provide a valid student Outlook e-mail.')"
             oninput="this.setCustomValidity('')"> 
             <div class="invalid-input d-none" id="invalid-email">

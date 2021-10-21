@@ -35,12 +35,12 @@ class Store {
 
 }
 
-$( document ).ready(function() {
+document.addEventListener("DOMContentLoaded", function(event) { 
     generateProductsDataArray();
     console.log('%c Hello there! I see you\'re checking out the code here ;) Feel free to look around. ', 'background: #222; color: #bada55');
     console.log('%c Developer profile: https://github.com/peanutooo ', 'background: #222; color: #bada55');
     console.log('%c Any feedback or suggestions?\n Drop me a message on LinkedIn: https://www.linkedin.com/in/iris-yan/ ', 'background: #222; color: #bada55');
-})
+});
 
 window.onload = function(){
 
@@ -52,18 +52,19 @@ window.onload = function(){
     }, 1500)   
 }
 
-$("#Email").change(function () { 
+function validifyEmail() {
+    var emailInput = document.getElementById("Email").value.toLowerCase();
+    var invalidEmailWarning = document.getElementById("invalid-email");
 
-    var emailInput = $("#Email").val().toLowerCase();
     if (!emailInput.includes("@student.usm.my")) {
-        $("#invalid-email").removeClass("d-none");
-        $("#invalid-email").addClass("d-block");
-    } else {
-        $("#invalid-email").removeClass("d-block");
-        $("#invalid-email").addClass("d-none");
-    }
+        invalidEmailWarning.classList.remove("d-none");
+        invalidEmailWarning.classList.add("d-block");
 
-});
+    } else {
+        invalidEmailWarning.classList.remove("d-block");
+        invalidEmailWarning.classList.add("d-none");
+    }
+}
 
 async function getProductsJSON() {
     let url = 'products.json';
@@ -88,7 +89,6 @@ async function generateProductsDataArray() {
     // console.log(productsList);
     displayCartItems(sortedCartDetailsArray());
 }
-
 
 const sortedCartDetailsArray = () => {
     // console.log(productsList.length); 

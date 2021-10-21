@@ -8,21 +8,19 @@ class Store {
     }
 }
 
-$( document ).ready(function() {
+document.addEventListener("DOMContentLoaded", function(event) { 
     console.log('%c Hello there! I see you\'re checking out the code here ;) Feel free to look around. ', 'background: #222; color: #bada55');
     console.log('%c Developer profile: https://github.com/peanutooo ', 'background: #222; color: #bada55');
     console.log('%c Any feedback or suggestions?\n Drop me a message on LinkedIn: https://www.linkedin.com/in/iris-yan/ ', 'background: #222; color: #bada55');
-})
+});
 
 window.onload = function(){
-
     //hide the preloader
     setTimeout(() => {
         const preloader = document.querySelector(".preloader");
         preloader.classList.add("fadeout");
         preloader.style.display = "none";
     }, 1000)
-    
 }
 
 function addQty(element) {
@@ -153,28 +151,16 @@ function addToCart(element) {
             break;
     }
 
-    cartItemsIDArray = Store.getCartItemsID();
-    let itemAlreadyAdded = false;
+    const cartUpdated = document.querySelector("#cartUpdatedToast");
+    const cartUpdatedToast = new bootstrap.Toast(cartUpdated, []);
+    cartUpdatedToast.show();
 
-    cartItemsIDArray.forEach(cartItemID => {
-        if (cartItemID === id) {
-            $('#itemUpdatedToast').toast('show');
-            $('#itemUpdatedToast').addClass("fadein");
+    cartUpdated.classList.add("fadein");
 
-            setTimeout(() => {
-                $('#itemUpdatedToast').addClass("fadeout");
-                $('#itemUpdatedToast').toast('hide');
-            }, 2000);
-            itemAlreadyAdded =  true;
-        }
-    })
-
-    if (!itemAlreadyAdded) {
-        $('#itemAddedToast').toast('show');
-        setTimeout(() => {
-            $('#itemAddedToast').toast('hide');
-        }, 2000);
-    }
+    setTimeout(() => {
+        cartUpdated.classList.add("fadeout");
+        cartUpdatedToast.hide();
+    }, 2000);
 }
 
 const validToAddToCart = (element) => {
