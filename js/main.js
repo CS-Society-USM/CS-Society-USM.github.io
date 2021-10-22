@@ -45,12 +45,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 window.onload = function(){
-    //hide the preloader
-    // setTimeout(() => {
-    //     const preloader = document.querySelector(".preloader");
-    //     preloader.classList.add("fadeout");
-    //     preloader.style.display = "none";
-    // }, 1000)
+    // hide the preloader
+    setTimeout(() => {
+        const preloader = document.querySelector(".preloader");
+        preloader.classList.add("fadeout");
+        preloader.style.display = "none";
+    }, 1000)
 }
 
 function addQty(element) {

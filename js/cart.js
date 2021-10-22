@@ -64,15 +64,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
     console.log('%c Any feedback or suggestions?\n Drop me a message on LinkedIn: https://www.linkedin.com/in/iris-yan/ ', 'background: #222; color: #bada55');
 });
 
-// window.onload = function(){
-
-//     //hide the preloader
-//     setTimeout(() => {
-//         const preloader = document.querySelector(".preloader");
-//         preloader.classList.add("fadeout");
-//         preloader.style.display = "none";
-//     }, 1500)   
-// }
+window.onload = function(){
+    //hide the preloader
+    setTimeout(() => {
+        const preloader = document.querySelector(".preloader");
+        preloader.classList.add("fadeout");
+        preloader.style.display = "none";
+    }, 1500)   
+}
 
 function validifyEmail() {
     var emailInput = document.getElementById("Email").value.toLowerCase();
@@ -385,6 +384,13 @@ const submitBtn = document.querySelector('#submit-form');
 checkoutForm.addEventListener('submit', e => {
     e.preventDefault();
 
+    // stitch contact number
+    const contactNumber = document.querySelector("#Contact_number");
+    const contact_countrycode = document.querySelector("#contact_part1").value;
+    const contact_body = document.querySelector("#contact_part2").value;
+
+    contactNumber.value = contact_countrycode + "-" + contact_body;
+
     const checkoutSubmitBtn = document.querySelector("#checkoutSubmitBtn");
     checkoutSubmitBtn.classList.add("disabled");
 
@@ -422,7 +428,6 @@ checkoutForm.addEventListener('submit', e => {
         })
         .then(res => {
             res.json();
-            
             // console.log(res);
         })
 

@@ -100,9 +100,15 @@
             </div>
           </div>
 
-          <div class="mb-3">
-            <label for="Contact_number" class="form-label fw-bold">Contact number</label>
-            <input type="text" class="form-control" name="Contact_number" id="Contact_number" required placeholder="eg +6012-3456789"> 
+          <div class="mb-3 row g-2 d-flex align-items-center">
+            <label for="" class="form-label fw-bold">Contact number</label>
+            <div class="col-3">
+              <input type="text" class="form-control contact_countrycode" name="contact_countrycode" id="contact_part1" required placeholder="+60"> 
+            </div>
+            <div class="col-9">
+              <input type="text" class="form-control col-10 Contact_body" name="Contact_body" id="contact_part2" required placeholder="12-3456789"> 
+            </div>
+            <input type="hidden" class="form-control" name="Contact_number" id="Contact_number"> 
           </div>
 
           <div class="mb-3">
@@ -169,7 +175,26 @@
           
           <div class="mb-3">
             <label for="State" class="form-label fw-bold ">State</label>
-            <input type="text" class="form-control ship-only-input" name="State" id="State" required>
+            <!-- <input type="text" class="form-control " name="State" id="State" required> -->
+            <select class="form-select bg-dark ship-only-input text-white"  name="State" id="State" aria-label=".form-select-sm">
+              <option selected disabled>Select state...</option>
+              <option value="Johor">Johor</option>
+              <option value="Kedah">Kedah</option>
+              <option value="Kelantan">Kelantan</option>
+              <option value="Kuala Lumpur">Kuala Lumpur</option>
+              <option value="Labuan">Labuan</option>
+              <option value="Labuan">Labuan</option>
+              <option value="Negeri Sembilan">Negeri Sembilan</option>
+              <option value="Pahang">Pahang</option>
+              <option value="Penang">Penang</option>
+              <option value="Perak">Perak</option>
+              <option value="Perlis">Perlis</option>
+              <option value="Putrajaya">Putrajaya</option>
+              <option value="Sabah">Sabah</option>
+              <option value="Sarawak">Sarawak</option>
+              <option value="Selangor">Selangor</option>
+              <option value="Terengganu">Terengganu</option>
+            </select>
           </div>
 
           <div class="mb-3">
@@ -216,13 +241,21 @@
 
           <div class="form-group mt-5">
             <label for="Receipt" class="form-label fw-bold">Upload receipt screenshot file</label>
+            <p class="desc-note">.png, .jpg, .jpeg, .pdf</p>
             <input type="file" class="form-control-file" id="Receipt" required>
           </div>
 
           <div class="mb-3 mt-5 row">
-            <input class="form-check-input col-1" type="checkbox" value="yes" id="checkYes">
-            <label class="form-check-label fw-bold col-11" for="checkYes">
+            <input class="form-check-input col-1" type="checkbox" value="yes" id="checkOne" required>
+            <label class="form-check-label fw-bold col-11" for="checkOne">
               I understand that all my information submitted via this form will be kept securely and only used for CS Society merchandise purposes.* 
+            </label>
+          </div>
+
+          <div class="mb-3 row">
+            <input class="form-check-input col-1" type="checkbox" value="yes" id="checkTwo" required>
+            <label class="form-check-label fw-bold col-11" for="checkTwo">
+              I have double-checked and confirmed that all the given information & paid amount are accurate.* 
             </label>
           </div>
         </div>          
