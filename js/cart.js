@@ -286,24 +286,24 @@ const removeCartItem = (id, e) => {
         switch (id) {
             case 'H01':
                 const hoodieInput = document.querySelector('#hoodie_input');
+                hoodieInput.value = ''; // clear the current value
                 itemDetails.forEach(itemDetail => {
-                    hoodieInput.value = ''; // clear the current value
                     hoodieInput.value += `${itemDetail.size} size (${itemDetail.quantity}), `; // replace with updated value
                 })
                 break;
             
             case 'SST01':
                 const shortsleeveshirtInput = document.querySelector('#shortsleeveshirt_input');
+                shortsleeveshirtInput.value = ''; // clear the current value
                 itemDetails.forEach(itemDetail => {
-                    shortsleeveshirtInput.value = ''; // clear the current value
                     shortsleeveshirtInput.value += `${itemDetail.size} size (${itemDetail.quantity}), `; // replace with updated value
                 })
                 break;
             
             case 'LST01':
                 const longsleeveshirtInput = document.querySelector('#longsleeveshirt_input');
+                longsleeveshirtInput.value = ''; // clear the current value
                 itemDetails.forEach(itemDetail => {
-                    longsleeveshirtInput.value = ''; // clear the current value
                     longsleeveshirtInput.value += `${itemDetail.size} size (${itemDetail.quantity}), `; // replace with updated value
                 })
                 break;
@@ -324,8 +324,6 @@ const removeCartItem = (id, e) => {
         emptyCartMsg.classList.add('d-none');
     }
 
-    console.log(document.querySelector('#hoodie_input').value);
-    
 }
 
 let choseShipBefore = false;
