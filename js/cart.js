@@ -248,12 +248,12 @@ const displayCartItems = (sortedCartDetailsArray) => {
 
     footHTML = `
     <tr class="shipping-bg text-white fw-bold">
-        <td class="text-end text-white col-7">Shipping fee </td>
+        <td class="text-end text-white pe-1 col-7">Shipping fee </td>
         <td class="text-end text-white col-2" id="shipping-fee">RM0.00</td>
         <td class="col-1"></td>
     </tr> 
     <tr class="totalprice-bg text-white fw-bold">
-        <td class="text-end text-white col-7">Total amount </td>
+        <td class="text-end text-white pe-1 col-7">Total amount </td>
         <td class="text-end text-white col-2" id="total-price">RM${retrieved_total_paying_price}.00</td>
         <td class="col-1"></td>
     </tr> 
