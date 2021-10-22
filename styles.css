@@ -259,7 +259,10 @@ input:-internal-autofill-selected, input:-webkit-autofill {
 
 .form-control:disabled, .form-control[readonly] {
     background-color: #636363;
-    border: 
+}
+
+.form-select:disabled {
+    background-color: #636363;
 }
 
 .invalid-input {
