@@ -6,6 +6,36 @@ class Store {
         const keysArray = Object.keys(localStorage);
         return keysArray;
     }
+
+    static getCartItemDetails(id) {
+        let details;
+        if (localStorage.getItem(id) === null) {
+            details = [];
+        } else {
+            details = JSON.parse(localStorage.getItem(id));
+        }
+        return details;
+    }
+
+    static addItemToCart(id, objDetails) {
+        const details = Store.getCartItemDetails(id);
+        details.push(objDetails);
+
+        localStorage.setItem(id, JSON.stringify(details));
+    }
+
+    static updateQtyForSize(id, size, newQty) {
+
+        const details = Store.getCartItemDetails(id);
+
+        details.forEach(detail => {
+            if (detail.size === size) {
+                detail.quantity = newQty;
+            }
+        })
+
+        localStorage.setItem(id, JSON.stringify(details));
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function(event) { 
@@ -16,11 +46,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 window.onload = function(){
     //hide the preloader
-    setTimeout(() => {
-        const preloader = document.querySelector(".preloader");
-        preloader.classList.add("fadeout");
-        preloader.style.display = "none";
-    }, 1000)
+    // setTimeout(() => {
+    //     const preloader = document.querySelector(".preloader");
+    //     preloader.classList.add("fadeout");
+    //     preloader.style.display = "none";
+    // }, 1000)
 }
 
 function addQty(element) {
@@ -73,6 +103,45 @@ function checkSizeSelected(element) {
     }
 }
 
+function sizableItemsExistsInCart(id) {
+    if (id !== 'C01') {
+        const cartItems = Store.getCartItemsID();
+
+        for (i = 0; i < cartItems.length; i++) {
+            if (id === cartItems[i]) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+function addSizableItemToCart(id, size, qty, details) {
+
+    if (sizableItemsExistsInCart(id)) {
+
+        const existingSizes = Store.getCartItemDetails(id);
+        var sizeAddedBefore = false;
+
+        // if the same size has been added before, just update the quantity only
+        existingSizes.forEach(existingSize => {
+            if (existingSize.size === size) {
+                sizeAddedBefore = true;
+            }
+        })
+
+        if (sizeAddedBefore) {
+            Store.updateQtyForSize(id, size, qty);
+        } else {
+            Store.addItemToCart(id, details);
+        }
+
+    } else {
+        // add to cart as normal
+        Store.addItemToCart(id, details);
+    }
+}
+
 function addToCart(element) {
     const id = element.parentElement.parentElement.id;
 
@@ -105,7 +174,8 @@ function addToCart(element) {
                 'size': hoodieSize
             }
 
-            localStorage.setItem(id, JSON.stringify(hoodieDetails));
+            addSizableItemToCart(id, hoodieSize, hoodieQty, hoodieDetails);
+
             break;
         
         case 'SST01':
@@ -126,7 +196,8 @@ function addToCart(element) {
                 'size': shortsleeveSize
             }
 
-            localStorage.setItem(id, JSON.stringify(shortsleeveDetails));
+            addSizableItemToCart(id, shortsleeveSize, shortsleeveQty, shortsleeveDetails);
+
             break;
 
         case 'LST01':
@@ -147,7 +218,7 @@ function addToCart(element) {
                 'size': longsleeveSize
             }
 
-            localStorage.setItem(id, JSON.stringify(longsleeveDetails));
+            addSizableItemToCart(id, longsleeveSize, longsleeveQty, longsleeveDetails);
             break;
     }
 

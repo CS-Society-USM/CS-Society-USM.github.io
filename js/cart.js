@@ -7,6 +7,16 @@ class Store {
         return keysArray;
     }
 
+    static getCartItemDetails(id) {
+        let details;
+        if (localStorage.getItem(id) === null) {
+            details = [];
+        } else {
+            details = JSON.parse(localStorage.getItem(id));
+        }
+        return details;
+    }
+
     static setTotalPrice(totalprice) {
         localStorage.setItem('totalprice', totalprice);
     }
@@ -33,6 +43,18 @@ class Store {
         localStorage.removeItem(id);
     }
 
+    static removeSizableCartItem(id, size) {
+        const details = Store.getCartItemDetails(id);
+
+        details.forEach((detail, index) => {
+            if (detail.size.includes(size)) {
+                details.splice(index, 1);
+            } 
+        });
+
+        localStorage.setItem(id, JSON.stringify(details));
+    }
+
 }
 
 document.addEventListener("DOMContentLoaded", function(event) { 
@@ -42,15 +64,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
     console.log('%c Any feedback or suggestions?\n Drop me a message on LinkedIn: https://www.linkedin.com/in/iris-yan/ ', 'background: #222; color: #bada55');
 });
 
-window.onload = function(){
+// window.onload = function(){
 
-    //hide the preloader
-    setTimeout(() => {
-        const preloader = document.querySelector(".preloader");
-        preloader.classList.add("fadeout");
-        preloader.style.display = "none";
-    }, 1500)   
-}
+//     //hide the preloader
+//     setTimeout(() => {
+//         const preloader = document.querySelector(".preloader");
+//         preloader.classList.add("fadeout");
+//         preloader.style.display = "none";
+//     }, 1500)   
+// }
 
 function validifyEmail() {
     var emailInput = document.getElementById("Email").value.toLowerCase();
@@ -107,16 +129,22 @@ const sortedCartDetailsArray = () => {
 
                 const cartItemDetail = JSON.parse(cartItemsDetails[j]);
 
-                if (cartItemsID[j] === 'SST01' || cartItemsID[j] === 'LST01' || cartItemsID[j] === 'H01') {
-                    const item = {
-                        'id': productsList[i].id,
-                        'name': productsList[i].item_name,
-                        'price': productsList[i].price,
-                        'quantity': Store.getQuantity(productsList[i].id),
-                        'size': cartItemDetail.size,
-                    }
-
-                    sortedCartDetails.push(item);
+                if (cartItemsID[j] !== 'C01') {
+                    cartItemDetail.forEach(cartItemDetail => {
+                        if (cartItemsID[j] === 'SST01' || cartItemsID[j] === 'LST01' || cartItemsID[j] === 'H01') {
+    
+                            const item = {
+                                'id': productsList[i].id,
+                                'name': productsList[i].item_name,
+                                'price': productsList[i].price,
+                                'quantity': cartItemDetail.quantity,
+                                'size': cartItemDetail.size,
+                            }
+        
+                            sortedCartDetails.push(item);
+        
+                        } 
+                    })
 
                 } else {
                     const item = {
@@ -167,7 +195,7 @@ const displayCartItems = (sortedCartDetailsArray) => {
                 shirtType = document.getElementById("hoodie_input");
             } 
 
-            shirtType.value = `${cartItem.size} size (${cartItem.quantity})`;
+            shirtType.value += `${cartItem.size} size (${cartItem.quantity}), `;
 
             let size = '';
             switch (cartItem.size) {
@@ -194,7 +222,7 @@ const displayCartItems = (sortedCartDetailsArray) => {
                     <div class="fw-light fst-italic text-white">${cartItem.size} size</div> 
                 </td>
                 <td class="text-white">${cartItem.quantity}</td>
-                <td class="text-white">RM<span class="itemprice text-white ${cartItem.id}">${cartItem_total_price}</span>.00</td>
+                <td class="text-white text-end">RM<span class="itemprice text-white ${cartItem.id}">${cartItem_total_price}</span>.00</td>
                 <td><i class="fas fa-trash text-white removeitem ${cartItem.id}" onclick="removeCartItem('${cartItem.id}', event)"></i></td>
             </tr> `
             cartContent.innerHTML += cartItemHTML;
@@ -209,7 +237,7 @@ const displayCartItems = (sortedCartDetailsArray) => {
             <tr>
                 <td class="item text-white">${cartItem.name}</td>
                 <td class="text-white">${cartItem.quantity}</td>
-                <td class="text-white">RM<span class="itemprice text-white ${cartItem.id}">${cartItem_total_price}</span>.00</td>
+                <td class="text-white text-end">RM<span class="itemprice text-white ${cartItem.id}">${cartItem_total_price}</span>.00</td>
                 <td><i class="fas fa-trash text-white removeitem ${cartItem.id}" onclick="removeCartItem('${cartItem.id}', event)"></i></td>
             </tr> `
 
@@ -221,13 +249,16 @@ const displayCartItems = (sortedCartDetailsArray) => {
 
     footHTML = `
     <tr class="shipping-bg text-white fw-bold">
-        <td class="text-end text-white">Shipping fee </td>
-        <td class="text-center text-white" id="shipping-fee">RM0.00</td>
+        <td class="text-end text-white col-7">Shipping fee </td>
+        <td class="text-end text-white col-2" id="shipping-fee">RM0.00</td>
+        <td class="col-1"></td>
     </tr> 
     <tr class="totalprice-bg text-white fw-bold">
-        <td class="text-end text-white">Total amount </td>
-        <td class="text-center text-white" id="total-price">RM${retrieved_total_paying_price}.00</td>
-    </tr> `
+        <td class="text-end text-white col-7">Total amount </td>
+        <td class="text-end text-white col-2" id="total-price">RM${retrieved_total_paying_price}.00</td>
+        <td class="col-1"></td>
+    </tr> 
+    `
 
     document.querySelector('.total-details').innerHTML += footHTML;
 
@@ -244,33 +275,56 @@ const removeCartItem = (id, e) => {
     retrieved_total_paying_price = Store.getTotalPrice();
     document.querySelector("#total-price").innerHTML = `RM${retrieved_total_paying_price}.00`;
 
-    switch (id) {
-        case 'C01':
-            document.querySelector('#cap_input').value = '';
-            break;
-        
-        case 'H01':
-            document.querySelector('#hoodie_input').value = '';
-            break;
-        
-        case 'SST01':
-            document.querySelector('#shortsleeveshirt_input').value = '';
-            break;
-        
-        case 'LST01':
-            document.querySelector('#longsleeveshirt_input').value = '';
-            break;
+    if (id !== 'C01') {
+        // remove item based on size
+        const size = e.target.parentElement.parentElement.firstElementChild.firstElementChild.nextElementSibling.innerHTML.charAt(0);
+
+        Store.removeSizableCartItem(id, size);
+
+        const itemDetails = Store.getCartItemDetails(id);
+
+        switch (id) {
+            case 'H01':
+                const hoodieInput = document.querySelector('#hoodie_input');
+                itemDetails.forEach(itemDetail => {
+                    hoodieInput.value = ''; // clear the current value
+                    hoodieInput.value += `${itemDetail.size} size (${itemDetail.quantity}), `; // replace with updated value
+                })
+                break;
+            
+            case 'SST01':
+                const shortsleeveshirtInput = document.querySelector('#shortsleeveshirt_input');
+                itemDetails.forEach(itemDetail => {
+                    shortsleeveshirtInput.value = ''; // clear the current value
+                    shortsleeveshirtInput.value += `${itemDetail.size} size (${itemDetail.quantity}), `; // replace with updated value
+                })
+                break;
+            
+            case 'LST01':
+                const longsleeveshirtInput = document.querySelector('#longsleeveshirt_input');
+                itemDetails.forEach(itemDetail => {
+                    longsleeveshirtInput.value = ''; // clear the current value
+                    longsleeveshirtInput.value += `${itemDetail.size} size (${itemDetail.quantity}), `; // replace with updated value
+                })
+                break;
+        }
+
+    } else { // for cap - no size
+        document.querySelector('#cap_input').value = '';
+        Store.removeCartItem(id);
     }
 
-    Store.removeCartItem(id);
-    e.target.parentElement.parentElement.remove();
+    e.target.parentElement.parentElement.remove(); // remove item from cart display
 
+    const emptyCartMsg = document.querySelector('.empty-cart');
     if (Store.getCartItemsID().length < 2) {
-        document.querySelector('.empty-cart').classList.remove('d-none');
-        document.querySelector('.empty-cart').classList.add('d-block');
+        emptyCartMsg.classList.remove('d-none');
+        emptyCartMsg.classList.add('d-block');
     } else {
-        document.querySelector('.empty-cart').classList.add('d-none');
+        emptyCartMsg.classList.add('d-none');
     }
+
+    console.log(document.querySelector('#hoodie_input').value);
     
 }
 
@@ -371,7 +425,7 @@ checkoutForm.addEventListener('submit', e => {
         .then(res => {
             res.json();
             
-            console.log(res);
+            // console.log(res);
         })
 
         .then(e => {
@@ -382,7 +436,7 @@ checkoutForm.addEventListener('submit', e => {
             })
             .then(res => {
     
-                console.log(res);
+                // console.log(res);
                 if (res['status'] == 200) {
                     alert("Purchase successful!");
                     Store.clearAll();
