@@ -73,20 +73,6 @@ window.onload = function(){
     }, 1500)   
 }
 
-function validifyEmail() {
-    var emailInput = document.getElementById("Email").value.toLowerCase();
-    var invalidEmailWarning = document.getElementById("invalid-email");
-
-    if (!emailInput.includes("@student.usm.my")) {
-        invalidEmailWarning.classList.remove("d-none");
-        invalidEmailWarning.classList.add("d-block");
-
-    } else {
-        invalidEmailWarning.classList.remove("d-block");
-        invalidEmailWarning.classList.add("d-none");
-    }
-}
-
 async function getProductsJSON() {
     let url = 'products.json';
     try {
@@ -410,9 +396,8 @@ checkoutForm.addEventListener('submit', e => {
     }
 
     const fileUploadElement = document.querySelector("#Receipt");
-    const matric_num = document.querySelector('#Matric_num').value;
     const student_name = document.querySelector('#name').value;
-    const submitted_filename = matric_num + "_" + student_name;
+    const submitted_filename = student_name;
     const file = fileUploadElement.files[0];
     const fr = new FileReader();
     fr.readAsArrayBuffer(file);
